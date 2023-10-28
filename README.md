@@ -55,7 +55,15 @@ See [Poetry's Docs] on various ways of making calls under the virtual-environmen
   [Poetry]: <https://python-poetry.org>
   [Poetry's Docs]: <https://python-poetry.org/docs/basic-usage/#using-your-virtual-environment>
 
-## Usage
+## CMD Usage
+
+Note: Requires poetry in your PATH Get curl of license url and make it python file with "curlconverter.com", save it in file "headers.py" in main folder of pywidevine (not sub-folder)
+
+```shell
+$ poetry run pywidevine license "C:/Path/To/A/Provision.wvd" PSSH "URL"
+```
+
+## Script Usage
 
 The following is a minimal example of using pywidevine in a script. It gets a License for Bitmovin's
 Art of Motion Demo. There's various stuff not shown in this specific example like:
@@ -76,6 +84,8 @@ from pywidevine.device import Device
 from pywidevine.pssh import PSSH
 
 import requests
+# get curl of license url and make it python with "curlconverter.com", save it in file "headers.py" in main folder of pywidevine (not sub-folder)
+import headers
 
 # prepare pssh
 pssh = PSSH("AAAAW3Bzc2gAAAAA7e+LqXnWSs6jyCfc1R0h7QAAADsIARIQ62dqu8s0Xpa"
