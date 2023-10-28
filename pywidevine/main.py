@@ -6,6 +6,8 @@ from zlib import crc32
 
 import click
 import requests
+# get curl of license url and make it python with "curlconverter", save it in file "headers.py" in main folder of pywidevine (not sub-folder)
+import headers
 import yaml
 from construct import ConstructError
 from google.protobuf.json_format import MessageToDict
@@ -109,7 +111,8 @@ def license_(device: Path, pssh: str, server: str, type_: str, privacy: bool):
     # send license challenge
     licence = requests.post(
         url=server,
-        data=challenge
+        data=challenge, 
+        headers=headers.headers
     )
     if licence.status_code != 200:
         log.error("[-] Failed to send challenge: [%s] %s", licence.status_code, licence.text)
